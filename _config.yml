@@ -4,7 +4,7 @@
 # baseurl is the website's URL without the hostname
 
 # If you are building a simple GitHub user page (http://username.github.io) then use these settings:
-url: "https://khanna.cc"
+url: "https://jiongwang.cc"
 baseurl: ""
 
 # If you are building a GitHub project page then use these settings:
@@ -14,16 +14,16 @@ baseurl: ""
 # Of course don't forget to change the username and projectname to YOUR username and project
 
 # Name of website
-title: Harry Khanna
+title: Jiong (Jon) Wang
 
 # Short description of your site
-description: Attorney & Software Developer
+description: Think analogue, act digital.
 
 # --- Navigation bar options --- #
 
 # List of links in the navigation bar
 navbar-links:
-  Attorney Bio: "attorney"
+  Bio: ""
   Blog: "blog"
   Notes: "notes"
 
@@ -62,7 +62,6 @@ footer-link-col: "#404040"
 # Important: you must keep the "name" parameter, everything else you can remove
 author:
   name: Harry Khanna
-  twitter: hkhanna
 
 # Select your active Social Network Links.
 # Uncomment the links you want to show in the footer and add your information to each link.
@@ -72,11 +71,9 @@ social-network-links:
   rss: true
 #  email: "someone@example.com"
 #  facebook: daattali
-  github: hkhanna
-  twitter: hkhanna
-#  reddit: yourname
-#  google-plus: +DeanAttali
-  linkedin: harry-khanna
+  github: jiongwangio
+  google-scholar: Jiong Wang
+  linkedin: Jiong Wang
 #  xing: yourname
 #  stackoverflow: "3943160/daattali"
 #  snapchat: deanat78
@@ -90,19 +87,17 @@ social-network-links:
 
 # Select which share links to show in posts
 share-links-active:
-  twitter: true
-  facebook: true
-  google: false
+  google-scholar: true
   linkedin: true
 
 # How to display the link to the website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "https://khanna.cc"  # eg. "deanattali.com/beautiful-jekyll"
+url-pretty: "https://jiongwang.cc"  # eg. "deanattali.com/beautiful-jekyll"
 
 # --- Web Statistics Section --- #
 
 # Fill in your Google Analytics gtag.js ID to track your website using gtag
-gtag: "UA-61256175-3"
+# gtag: "UA-61256175-3"
 
 # Fill in your Google Analytics ID to track your website using GA
 #google_analytics: ""
@@ -156,7 +151,7 @@ title-separator: "-"
 # --- Don't need to touch anything below here (but you can if you want) --- #
 
 # Output options (more information on Jekyll's site)
-timezone: "America/New_York"
+timezone: "Europe/Amsterdam"
 markdown: kramdown
 highlighter: rouge
 permalink: /blog/:title/
