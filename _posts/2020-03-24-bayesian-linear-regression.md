@@ -25,7 +25,7 @@ https://github.com/wonjohn/Bayes_for_Regression
 -------------------
 *Bayesian epistemology* introduces important constraints on top of rational degrees of belief and a rule of probabilistic inference--the principle of conditionalization, according to [William Talbott, 2008](https://plato.stanford.edu/entries/epistemology-bayesian/).
 
-*Bayesian statistics* forms a major branch in *statistics*. *Bayesian statistics* relies on *Bayesian principle* to reveal a beautiful epistemology scheme through probabilistic inference: one should rationally updates degrees of knowing or belief once new evidence is observed. Mathematically, it is denoted as:
+*Bayesian statistics* forms a major branch in *statistics*. It relies on *Bayesian principle* to reveal a beautiful epistemology scheme through probabilistic inference: one should rationally updates degrees of knowing or belief once new evidence is observed. Mathematically, *Bayesian principle* is denoted as:
 
 ***P(S│E) = P(E│S)P(S)/P(E)***
 
@@ -186,7 +186,7 @@ which is exactly how Fig.10 is plotted. The shadow is a combination of possible 
 
 ## Wrap-up
 -------------------
-So far we have been stay intuitively by using general notations (such as ***P(θ)***), graphics and animations. In order to obtain exact measurement of the distribution regarding the *likelihood*, *prior*, and *posterior*, we can explicitly quantify the distributions by using hyper-parameters, for instance:
+So far we have been stayed intuitively by using general notations (such as ***P(θ)***), graphics and animations. In order to obtain exact measurement of the distribution regarding the *likelihood*, *prior*, and *posterior*, we can explicitly quantify the distributions by using hyper-parameters, for instance:
 - ***P(θ) = P(θ│α) ~ N(θ ; 0, α<sup>-1</sup>I)*** for the *prior*, where ***α*** is the hyper-parameter controlling the shape of probabilistic distribution;
 - ***P(D│θ) = P(y<sub>k</sub>│x<sub>k</sub> , θ, β) ~ N(y<sub>k</sub> ; θ<sup>T</sup>X, β<sup>-1</sup>I)***, where ***β*** is another hyper-parameter of precision (inverse variance) controlling the noise intensity as ***ε ~ N(ε ; 0, β<sup>-1</sup>I)***;
 - we can even have design function ***φ*** for ***φ(x)=1+x***.
