@@ -27,7 +27,7 @@ _Bayesian epistemology_ introduces important constraints on top of rational degr
 
 _Bayesian statistics_ forms a major branch in _statistics_. _Bayesian statistics_ relies on _Bayesian principle_ to reveal a beautiful epistemology scheme through probabilistic inference: one should rationally updates degrees of knowing or belief once new evidence is observed. Mathematically, it is denoted as:
 
-<p align="center">**P(S|E) = P(E|S)P(S)/P(E)**</p>
+***P(S|E) = P(E|S)P(S)/P(E)***
 
 where, _**s**_ can be any arbitrary statement, and _**E**_ is observed evidence(s). Without observing any evidence, it is rational to stay with idealized belief denoted as the _prior_ belief _**P(s)**_. But if we have observed an evidence, there is something we can do to update our belief. One option is to utilize the measurement called the _likelihood_ function that quantifies how our _prior_ belief should manifest the evidence at hand. The _likelihood_ function _**P(E|S)**_ together with the _prior_ function _**P(S)**_ help to update our belief once there is more information from the reality. The updated belief is called the _posterior_ function of _**S**_, which is _**P(S|E)**_.
 
@@ -42,29 +42,29 @@ Take the simplest case of _univariate linear regression_ problem for example, gi
 
 <p align="center"><img src="/img/bayes/0_data.png" width="450" heigth="390"></p>
 
-_<p align="center">Fig.1 Linear regression problem setting.</p>_
+<p align="center">Fig.1 Linear regression problem setting.</p>
 
 Here in Fig.1 the true linear function is intentionally revealed as a line so that we can compare how _least squares_ help us to recover the true model from few observations. The true _univariate linear_ model I used here is:
 
-_<p align="center">**M(x) = 3 + 2x**</p>_
+***M(x) = 3 + 2x***
 
 However, this true underlying model is usually unknown in the form as:
 
-_<p align="center">**M(x) = θ<sub>1</sub> + θ<sub>2</sub>x**</p>_
+***M(x) = θ<sub>1</sub> + θ<sub>2</sub>x***
 
 or in a vectorized form as:
 
-_<p align="center">**M(X) = θ<sup>T</sup>X**</p>_
+***M(X) = θ<sup>T</sup>X***
 
 where _**X**_ is referred as designed vector or matrix in the form of _[1, x]<sup>T</sup>_ and _**θ**_ is _[θ<sub>1</sub>, θ<sub>2</sub>]<sup>T</sup>_. In reality, what we do know is nothing but a few observations _**Y**_ as _**(y<sub>1</sub>, y<sub>2</sub>, ... , y<sub>n</sub>)**_ but suffering from noises _**ε**_:
 
-_<p align="center">**Y = θ<sup>T</sup>X + ε**</p>_
+***Y = θ<sup>T</sup>X + ε***
 
 where the noises are preferably _Gaussian_ distributed noises around the true model. Then, can we really expect conventional methods such as the _least squares_ to find or approximate the true value of _[θ<sub>1</sub>, θ<sub>2</sub>]<sup>T</sup>_, which are _3_ and _2_ for the intercept and slope, respectively? We will stick to only three observations each time as shown in Fig.1, and intentionally create observations with _Gaussian_ noises to test the _least squares_ for several trials. Well, even with only three observations, the _least squares_ works fine to find linear models by minimizing their difference from the observations as shown in Fig.2 below.
 
 <p align="center"><img src="/img/bayes/0_sampleOLS.gif" width="430" height="290"></p>
 
-_<p align="center">Fig.2 Sample least squares solutions.</p>_
+<p align="center">Fig.2 Sample least squares solutions.</p>
 
 Each time, the _least squares_ fits a linear model to three randomly drawn observations. These fitted lines or models are more or less different from the true underlying model. The difference between the fitted and true model is understandable: due to the small number of the observations, the _Gaussian_ noise in the observations hardly manifest symmetry with respect to the true model, and sometimes all three observations fall on the same side of the true underlying model, thus fitting a model that minimizes its difference to a small number of observations almost always produce difference between the fitted model and the true model. Meantime, it is also worth noticing that most observations are close to the true model due to the _Gaussian_ noise in them, the fitted lines are more likely to be close to the true model. In short, there are few remarks from the application of _least squares_ to the solution of true underlying model:
 - frequentist approach such as the _least squares_ is inherently uncertain and fits uncertain models, especially when observations are limited;
@@ -82,7 +82,7 @@ _Bayesian statistics_ attempt to explicitly impose credibility upon the underlyi
 
 In the case of linear regression as shown in Fig.1, _Bayesian statistics_ tries to figure out the probability of the unobserved linear model (linear parameters) through few point observations (points in this example).It applies _Bayesian principle_ _**P(S|E) = P(E|S)P(S)/P(E)**_ to the model parameters in _**M(x) = θ<sub>1</sub> + θ<sub>2</sub>x**_:
 
-_<p align="center">**P(θ|D) = P(D|θ)P(θ)/P(D)**</p>_
+***P(θ|D) = P(D|θ)P(θ)/P(D)***
 
 where _**D**_, collection of noisy observations, becomes our evidence. In Fig.1, there are 3 observations available for us to find out the model parameters _**θ**_. We can denote observations points as collection of tuples _**{(x<sub>1</sub>, y<sub>1</sub>), (x<sub>2</sub>, y<sub>2</sub>), (x<sub>3</sub>, y<sub>3</sub>)}**_. _**P(θ|D)**_ is called the _posterior_ distribution of _**θ**_ as it is a distribution after we updating our knowledge by seeing data as evidence. The _posterior_ is determined by the terms on the right-hand side of the equation. _**P(D|θ)**_ is the _likelihood_ function that quantifying the probability of the observations produced by some model governed by parameters _**θ**_. _**P(θ)**_ is the _prior_ distribution of _**θ**_ encoding our knowledge of parameters before making any observations. How could it be possible to know anything about _**θ**_ before seeing any data? Well, in most practical cases, we do have some ideas: the relationships between precipitation and soil loss, traffic volume and road pollution, location and land price, etc...We more or less know the general range of _**θ**_, or its sign, at least. _**P(D)**_ is a normalization term that makes the right-hand side of the equation a true probabilistic distribution that integrated to 1.
 
@@ -93,7 +93,7 @@ If we stay simple enough in this tutorial, we can temporarily ignore the normali
 
 For any single observed data point _**(x<sub>k</sub>, y<sub>k</sub>)**_, the _likelihood_ measures the probability of the model parameter _**θ**_ gives rise to this known data point. Thus, _given_ any possible _**θ**_, how likely it is to observe this particular point of tuple _**(x<sub>k</sub> , y<sub>k</sub>)**_? Referring above to the noisy observation from the linear model, by saying we have observations with noise _**ε**_ around the true model, it is most handy to impose a _Gaussian_ distribution over the noise around the true model. In short, the _likelihood_ of observing the tuple _**(x<sub>k</sub> , y<sub>k</sub>)**_ follows a _Gaussian_ distribution around the model specified by _**θ**_:
 
-_<p align="center">**P(D|θ) = P(y<sub>k</sub>|x<sub>k</sub> , θ) ~ N(y<sub>k</sub> ; θ<sup>T</sup>X, ε)**</p>_
+***P(D|θ) = P(y<sub>k</sub>|x<sub>k</sub> , θ) ~ N(y<sub>k</sub> ; θ<sup>T</sup>X, ε)***
 
 This _Gaussian_ form _likelihood_ can be easily implemented as a function in _python_ as:
 
@@ -107,17 +107,17 @@ where I chose a standard deviation of _**1**_ for this _Gaussian likelihood_ as 
 
 <p align="center"><img src="/img/bayes/1_likeli_2.gif" width="800" heigth="680"></p>
 
-_<p align="center">Fig.3 Likelihood wrt. a single observation.</p>_
+<p align="center">Fig.3 Likelihood wrt. a single observation.</p>
 
 In this case of linear regression, isn't it getting clear that these line-shaped _likelihood_ functions are potentially intersected at some relatively fixed region? That is where we can combine these _likelihood_ function that the profile of _**θ**_ can be delineated. In what way to combine? As the _likelihood_ is a probability measurement, combining the _likelihood_ is simply a joint probability. Observing each data point as a _**(x<sub>k</sub> , y<sub>k</sub>)**_ tuple is considered to be an [_**iid**_](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables) process, thus the joint _likelihood_ of any _**θ**_ gives rise to all the observations is a multiplication of all the individual _likelihood_:
 
-_**P(D|θ) = ∏<sub>i</sub> P((x<sub>i</sub> , y<sub>i</sub>)|θ)**_
+***P(D|θ) = ∏<sub>i</sub> P((x<sub>i</sub> , y<sub>i</sub>)|θ)***
 
 The animation (Fig.4) below shows how this joint probability is updated with each added observation. It is quite appealing that when the second _**(x<sub>k</sub> , y<sub>k</sub>)**_ tuple is observed, the joint _likelihood_ function already started take in shape and the inference of the model parameter can be made in a well delineated subspace within the _[θ<sub>1</sub> , θ<sub>2</sub>]<sup>T</sup>_ space. The joint _likelihood_ with an ellipse-shaped _Gaussian_ centers around _**[3, 2]**_ indicating a high confidence that it should be the model parameter. At the same time, the _likelihood_ does not reject other possibilities as it is still possible, with a certain noise level in the observations, that _[θ<sub>1</sub> , θ<sub>2</sub>]<sup>T</sup>_ can take some other values around _**[3, 2]**_. When the third point is observed, this _likelihood_ gives a more shrunk distribution representing the process of knowledge update wrt. _[θ<sub>1</sub> , θ<sub>2</sub>]<sup>T</sup>_.
 
 <p align="center"><img src="/img/bayes/1_likeli1.gif" width="800" heigth="680"></p>
 
-_<p align="center">Fig.4 Joint likelihood wrt. to observations.</p>_
+<p align="center">Fig.4 Joint likelihood wrt. to observations.</p>
 
 At this point, it is no surprising that why the [_**Maximum Likelihood Estimation (MLE)**_](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation) is so frequently adopted. For linear regression, especially simple as there is only few independent variable and enough observations, and of course without too much noise, the joint _likelihood_ function could already bring a desirable results. And it is then also quite safe to maximize the _likelihood_ to obtain a point estimation of the model parameter.
 
@@ -129,13 +129,13 @@ But here in this tutorial, although it is a simple linear regression example, we
 
 <p align="center"><img src="/img/bayes/2_prior.png" width="380" heigth="380"></p>
 
-_<p align="center">Fig.5 Non-informative prior distribution for model parameters.</p>_
+<p align="center">Fig.5 Non-informative prior distribution for model parameters.</p>
 
 This _improper Gaussian_ distribution within the _[θ<sub>1</sub> , θ<sub>2</sub>]<sup>T</sup>_ space means that if we draw points randomly from it, it is more likely to have _**θ**_ with values close to zero. Visually, each random point in the _[θ<sub>1</sub> , θ<sub>2</sub>]<sup>T</sup>_ space determines a random line in the space of _[x, y]<sup>T</sup>_ as shown below in Fig.6, but most lines are with interception and slope close to zero.  
 
 <p align="center"><img src="/img/bayes/2_priorDraw.gif" width="800" heigth="680"></p>
 
-_<p align="center">Fig.6 Randomly drawn prior functions for the model.</p>_
+<p align="center">Fig.6 Randomly drawn prior functions for the model.</p>
 
 Since we know that the true model parameters, plus that we also know that the true parameters are well captured by the _likelihood_, this _improper prior_ appears to be way off the target. Is it possible to update this _prior_ to a meaningful state by using the _likelihood_?
 
@@ -149,7 +149,7 @@ Although it seems like the _posterior_ distribution of _**θ**_ obtained by comb
 
 <p align="center"><img src="/img/bayes/3_post_likeli.gif" width="330" heigth="330"></p>
 
-_<p align="center">Fig.7 Posterior distribution/function for model parameters.</p>_
+<p align="center">Fig.7 Posterior distribution/function for model parameters.</p>
 
 Now, one may start to ask: what on earth is the point to use _prior_ functions that are improperly or non-informatively designed?! Unfortunately, there is no one-fits-all answer. It is the nature of statistic inference that we are forced to make some assumptions from scratch, just like we have to assume there is a linear relationship already before obtaining more data points than only a few of them. There are [few discussions](https://stats.stackexchange.com/questions/27813/what-is-the-point-of-non-informative-priors) going around for choosing _prior_ distributions scientifically. More formal research can be found in [**The Bayesian Choice: From Decision-Theoretic Foundations to Computational Implementation (Springer Texts in Statistics**](https://www.amazon.com/dp/0387715983/), as well as [**Moving beyond noninformative priors: why and how to choose weakly informative priors in Bayesian analyses**](https://onlinelibrary.wiley.com/doi/10.1111/oik.05985).
 
@@ -159,7 +159,7 @@ Even without the context of domain knowledge, using _improper prior_ achieves so
 
 <p align="center"><img src="/img/bayes/4_regularization.png" width="600" heigth="510"></p>
 
-_<p align="center">Fig.8 Regularization equivalence of prior functions (src: http://primo.ai/index.php?title=Regularization).</p>_
+<p align="center">Fig.8 Regularization equivalence of prior functions (src: http://primo.ai/index.php?title=Regularization).</p>
 
 The **biggest difference** is probably that _Bayesian principle_ stays as a general statistical framework, whereas _regularization_ is more commonly adopted from the frequentist perspective that a particular solution to the model parameter is expected.
 
@@ -167,7 +167,7 @@ Apart from the _prior_ specification, it should NOT be a worse case where we hav
 
 <p align="center"><img src="/img/bayes/4_postObs.gif" width="800" heigth="680"></p>
 
-_<p align="center">Fig.9 Change of posterior distribution/function for model parameters along with increasing observations.</p>_
+<p align="center">Fig.9 Change of posterior distribution/function for model parameters along with increasing observations.</p>
 
 Holding the _posterior_ at hand, we now have a more concentrated distribution of the model parameters. The final distribution of the _**θ**_ in the _[θ<sub>1</sub> , θ<sub>2</sub>]<sup>T</sup>_ space, as shown in Fig.8 is confidently centering the point _[3 , 2]_, while still shows possibility of parameters such as _[2.5 , 2]_. This probabilistic perspective is nice as the solution of the parameter is optimal at _[3 , 2]_, we are not rejecting other possibilities without knowing how the qualities of the observations are disturbed by those random noises. We have few options to deal with this _posterior_. Similar to maximizing the _likelihood_, we can seek the maximum-a-posteriori (_**MAP**_) probability to achieve the optimal model parameters. We can also stay with the probability distribution to quantify confidence of prediction.
 
@@ -175,11 +175,11 @@ Since it is a probability distribution in the _posterior_, it means sampling is 
 
 <p align="center"><img src="/img/bayes/5_postDraw.gif" width="800" heigth="680"></p>
 
-_<p align="center">Fig.10 Model possibilities in terms of posterior distribution of model parameters.</p>_
+<p align="center">Fig.10 Model possibilities in terms of posterior distribution of model parameters.</p>
 
 The shadow defines an import confidence interval for making predictions: given any _**x<sub>new</sub>**_, what is the probability of _**y<sub>new</sub>**_? As the probability of giving rise to a _**y<sub>new</sub>**_ is the probability of the model, the distribution of _**y<sub>new</sub>**_ is now out-of-box given all the possible linear model. Mathematically, it is equivalent to weight all predictions made by each potential linear model by the probabilistic distribution of that model, as
 
-_**P(D<sub>new</sub>|D) = ʃ P(D<sub>new</sub>|θ,D)P(θ|D)dθ**_
+***P(D<sub>new</sub>|D) = ʃ P(D<sub>new</sub>|θ,D)P(θ|D)dθ***
 
 which is exactly how Fig.10 is plotted. The shadow is a combination of possible linear model weighted by their possibilities. The equation above also speaks the same idea: the _posterior_ considers all possible _**θ**_, which means the _posterior_ does NOT care about the exact _**θ**_! The integration plays a beautiful role to manifest such contradictory that all _**θ**_ are involved (considered), but then are integrated out (does NOT care)!
 
