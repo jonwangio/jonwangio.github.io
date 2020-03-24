@@ -1,21 +1,21 @@
 ---
 layout: default
-title: Blog
+title: Education
 css: "/css/custom.css"
 ---
 
 <div class="container font-16">
-  <h2>Blog</h2>
-  <p>I write about law, and I write about software. Sometimes I write about both together.</p>
-  {% for post in site.posts %}
-  <a href="{{ post.url }}">
+  <h2>Education</h2>
+  <p>I write tutorials for understanding both basic and a bit advanced data analysis theories, tools, and applications.</p>
+  {% for education in site.education %}
+  <a href="{{ education.url }}">
     <div class="row form-group">
       <div class="col-md-2">
-        <code>{{post.date | date: "%Y %b %d"}}</code>
+        <code>{{education.date | date: "%Y %b %d"}}</code>
       </div>
       <div class="col-md-9">
-        <strong>{{post.title}}</strong>
-        <br>{{post.subtitle}}
+        <strong>{{education.title}}</strong>
+        <br>{{education.subtitle}}
       </div>
     </div>
   </a>
