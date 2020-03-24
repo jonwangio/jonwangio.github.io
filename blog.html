@@ -7,15 +7,15 @@ css: "/css/custom.css"
 <div class="container font-16">
   <h2>Education</h2>
   <p>I write tutorials for understanding both basic and a bit advanced data analysis theories, tools, and applications.</p>
-  {% for education in site.education %}
-  <a href="{{ education.url }}">
+  {% for post in site.posts %}
+  <a href="{{ post.url }}">
     <div class="row form-group">
       <div class="col-md-2">
-        <code>{{education.date | date: "%Y %b %d"}}</code>
+        <code>{{post.date | date: "%Y %b %d"}}</code>
       </div>
       <div class="col-md-9">
-        <strong>{{education.title}}</strong>
-        <br>{{education.subtitle}}
+        <strong>{{post.title}}</strong>
+        <br>{{post.subtitle}}
       </div>
     </div>
   </a>
