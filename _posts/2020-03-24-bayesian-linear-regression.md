@@ -27,9 +27,9 @@ https://github.com/wonjohn/Bayes_for_Regression
 
 *Bayesian statistics* forms a major branch in *statistics*. *Bayesian statistics* relies on *Bayesian principle* to reveal a beautiful epistemology scheme through probabilistic inference: one should rationally updates degrees of knowing or belief once new evidence is observed. Mathematically, it is denoted as:
 
-***P(S|E) = P(E|S)P(S)/P(E)***
+***P(S│E) = P(E│S)P(S)/P(E)***
 
-where, ***s*** can be any arbitrary statement, and ***E*** is observed evidence(s). Without observing any evidence, it is rational to stay with idealized belief denoted as the *prior* belief ***P(s)***. But if we have observed an evidence, there is something we can do to update our belief. One option is to utilize the measurement called the *likelihood* function that quantifies how our *prior* belief should manifest the evidence at hand. The *likelihood* function ***P(E|S)*** together with the *prior* function ***P(S)*** help to update our belief once there is more information from the reality. The updated belief is called the *posterior* function of ***S***, which is ***P(S|E)***.
+where, ***s*** can be any arbitrary statement, and ***E*** is observed evidence(s). Without observing any evidence, it is rational to stay with idealized belief denoted as the *prior* belief ***P(s)***. But if we have observed an evidence, there is something we can do to update our belief. One option is to utilize the measurement called the *likelihood* function that quantifies how our *prior* belief should manifest the evidence at hand. The *likelihood* function ***P(E│S)*** together with the *prior* function ***P(S)*** help to update our belief once there is more information from the reality. The updated belief is called the *posterior* function of ***S***, which is ***P(S│E)***.
 
 In this small snippet of tutorial, the principle of *Bayesian statistics* is showcased through a prevalent prediction problem: *linear regression*.
 
@@ -80,20 +80,20 @@ As long as we cannot reject other possible fitted models only except we could be
 - the probability of all potential models encoding our knowledge or belief *prior* to see any evidence;
 - the probability of the evidence, once observed, given by any potential model.
 
-In the case of linear regression as shown in Fig.1, *Bayesian statistics* tries to figure out the probability of the unobserved linear model (linear parameters) through few point observations (points in this example).It applies *Bayesian principle* ***P(S|E) = P(E|S)P(S)/P(E)*** to the model parameters in ***M(x) = θ<sub>1</sub> + θ<sub>2</sub>x***:
+In the case of linear regression as shown in Fig.1, *Bayesian statistics* tries to figure out the probability of the unobserved linear model (linear parameters) through few point observations (points in this example).It applies *Bayesian principle* ***P(S│E) = P(E│S)P(S)/P(E)*** to the model parameters in ***M(x) = θ<sub>1</sub> + θ<sub>2</sub>x***:
 
-***P(θ|D) = P(D|θ)P(θ)/P(D)***
+***P(θ│D) = P(D│θ)P(θ)/P(D)***
 
-where ***D***, collection of noisy observations, becomes our evidence. In Fig.1, there are 3 observations available for us to find out the model parameters ***θ***. We can denote observations points as collection of tuples ***{(x<sub>1</sub>, y<sub>1</sub>), (x<sub>2</sub>, y<sub>2</sub>), (x<sub>3</sub>, y<sub>3</sub>)}***. ***P(θ|D)*** is called the *posterior* distribution of ***θ*** as it is a distribution after we updating our knowledge by seeing data as evidence. The *posterior* is determined by the terms on the right-hand side of the equation. ***P(D|θ)*** is the *likelihood* function that quantifying the probability of the observations produced by some model governed by parameters ***θ***. ***P(θ)*** is the *prior* distribution of ***θ*** encoding our knowledge of parameters before making any observations. How could it be possible to know anything about ***θ*** before seeing any data? Well, in most practical cases, we do have some ideas: the relationships between precipitation and soil loss, traffic volume and road pollution, location and land price, etc...We more or less know the general range of ***θ***, or its sign, at least. ***P(D)*** is a normalization term that makes the right-hand side of the equation a true probabilistic distribution that integrated to 1.
+where ***D***, collection of noisy observations, becomes our evidence. In Fig.1, there are 3 observations available for us to find out the model parameters ***θ***. We can denote observations points as collection of tuples ***{(x<sub>1</sub>, y<sub>1</sub>), (x<sub>2</sub>, y<sub>2</sub>), (x<sub>3</sub>, y<sub>3</sub>)}***. ***P(θ│D)*** is called the *posterior* distribution of ***θ*** as it is a distribution after we updating our knowledge by seeing data as evidence. The *posterior* is determined by the terms on the right-hand side of the equation. ***P(D│θ)*** is the *likelihood* function that quantifying the probability of the observations produced by some model governed by parameters ***θ***. ***P(θ)*** is the *prior* distribution of ***θ*** encoding our knowledge of parameters before making any observations. How could it be possible to know anything about ***θ*** before seeing any data? Well, in most practical cases, we do have some ideas: the relationships between precipitation and soil loss, traffic volume and road pollution, location and land price, etc...We more or less know the general range of ***θ***, or its sign, at least. ***P(D)*** is a normalization term that makes the right-hand side of the equation a true probabilistic distribution that integrated to 1.
 
-If we stay simple enough in this tutorial, we can temporarily ignore the normalization term ***P(D)***. Now,  in order to quantify the *posterior* ***P(θ|D)***, the problem reduces to specify the *likelihood* ***P(D|θ)*** and *prior* ***P(θ)***, which has been mentioned at the beginning of this section as important probabilities.
+If we stay simple enough in this tutorial, we can temporarily ignore the normalization term ***P(D)***. Now,  in order to quantify the *posterior* ***P(θ│D)***, the problem reduces to specify the *likelihood* ***P(D│θ)*** and *prior* ***P(θ)***, which has been mentioned at the beginning of this section as important probabilities.
 
 
 ### Bayesian function specification: *likelihood*
 
 For any single observed data point ***(x<sub>k</sub>, y<sub>k</sub>)***, the *likelihood* measures the probability of the model parameter ***θ*** gives rise to this known data point. Thus, *given* any possible ***θ***, how likely it is to observe this particular point of tuple ***(x<sub>k</sub> , y<sub>k</sub>)***? Referring above to the noisy observation from the linear model, by saying we have observations with noise ***ε*** around the true model, it is most handy to impose a *Gaussian* distribution over the noise around the true model. In short, the *likelihood* of observing the tuple ***(x<sub>k</sub> , y<sub>k</sub>)*** follows a *Gaussian* distribution around the model specified by ***θ***:
 
-***P(D|θ) = P(y<sub>k</sub>|x<sub>k</sub> , θ) ~ N(y<sub>k</sub> ; θ<sup>T</sup>X, ε)***
+***P(D│θ) = P(y<sub>k</sub>│x<sub>k</sub> , θ) ~ N(y<sub>k</sub> ; θ<sup>T</sup>X, ε)***
 
 This *Gaussian* form *likelihood* can be easily implemented as a function in *python* as:
 
@@ -111,7 +111,7 @@ where I chose a standard deviation of ***1*** for this *Gaussian likelihood* as 
 
 In this case of linear regression, isn't it getting clear that these line-shaped *likelihood* functions are potentially intersected at some relatively fixed region? That is where we can combine these *likelihood* function that the profile of ***θ*** can be delineated. In what way to combine? As the *likelihood* is a probability measurement, combining the *likelihood* is simply a joint probability. Observing each data point as a ***(x<sub>k</sub> , y<sub>k</sub>)*** tuple is considered to be an [***iid***](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables) process, thus the joint *likelihood* of any ***θ*** gives rise to all the observations is a multiplication of all the individual *likelihood*:
 
-***P(D|θ) = ∏<sub>i</sub> P((x<sub>i</sub> , y<sub>i</sub>)|θ)***
+***P(D│θ) = ∏<sub>i</sub> P((x<sub>i</sub> , y<sub>i</sub>)│θ)***
 
 The animation (Fig.4) below shows how this joint probability is updated with each added observation. It is quite appealing that when the second ***(x<sub>k</sub> , y<sub>k</sub>)*** tuple is observed, the joint *likelihood* function already started take in shape and the inference of the model parameter can be made in a well delineated subspace within the *[θ<sub>1</sub> , θ<sub>2</sub>]<sup>T</sup>* space. The joint *likelihood* with an ellipse-shaped *Gaussian* centers around ***[3, 2]*** indicating a high confidence that it should be the model parameter. At the same time, the *likelihood* does not reject other possibilities as it is still possible, with a certain noise level in the observations, that *[θ<sub>1</sub> , θ<sub>2</sub>]<sup>T</sup>* can take some other values around ***[3, 2]***. When the third point is observed, this *likelihood* gives a more shrunk distribution representing the process of knowledge update wrt. *[θ<sub>1</sub> , θ<sub>2</sub>]<sup>T</sup>*.
 
@@ -163,7 +163,7 @@ Even without the context of domain knowledge, using *improper prior* achieves so
 
 The **biggest difference** is probably that *Bayesian principle* stays as a general statistical framework, whereas *regularization* is more commonly adopted from the frequentist perspective that a particular solution to the model parameter is expected.
 
-Apart from the *prior* specification, it should NOT be a worse case where we have to heavily rely on observations. With the development of data acquirement approaches, we could be able to be confident about the model parameters with *likelihood*. The visualization of the *posterior* below (Fig.9) shows how increasing observations may update our knowledge even from a poor *prior*. The multiplication in ***P(D|θ)P(θ)/P(D)*** is explicitly two way: (1) the *prior* is constraining or dragging, while (2) the *likelihood* is updating and washing away the effect of constraining or dragging.
+Apart from the *prior* specification, it should NOT be a worse case where we have to heavily rely on observations. With the development of data acquirement approaches, we could be able to be confident about the model parameters with *likelihood*. The visualization of the *posterior* below (Fig.9) shows how increasing observations may update our knowledge even from a poor *prior*. The multiplication in ***P(D│θ)P(θ)/P(D)*** is explicitly two way: (1) the *prior* is constraining or dragging, while (2) the *likelihood* is updating and washing away the effect of constraining or dragging.
 
 <p align="center"><img src="/img/bayes/4_postObs.gif" width="800" heigth="680"></p>
 
@@ -179,7 +179,7 @@ Since it is a probability distribution in the *posterior*, it means sampling is 
 
 The shadow defines an import confidence interval for making predictions: given any ***x<sub>new</sub>***, what is the probability of ***y<sub>new</sub>***? As the probability of giving rise to a ***y<sub>new</sub>*** is the probability of the model, the distribution of ***y<sub>new</sub>*** is now out-of-box given all the possible linear model. Mathematically, it is equivalent to weight all predictions made by each potential linear model by the probabilistic distribution of that model, as
 
-***P(D<sub>new</sub>|D) = ʃ P(D<sub>new</sub>|θ,D)P(θ|D)dθ***
+***P(D<sub>new</sub>│D) = ʃ P(D<sub>new</sub>│θ,D)P(θ│D)dθ***
 
 which is exactly how Fig.10 is plotted. The shadow is a combination of possible linear model weighted by their possibilities. The equation above also speaks the same idea: the *posterior* considers all possible ***θ***, which means the *posterior* does NOT care about the exact ***θ***! The integration plays a beautiful role to manifest such contradictory that all ***θ*** are involved (considered), but then are integrated out (does NOT care)!
 
@@ -187,8 +187,8 @@ which is exactly how Fig.10 is plotted. The shadow is a combination of possible 
 ## Wrap-up
 -------------------
 So far we have been stay intuitively by using general notations (such as ***P(θ)***), graphics and animations. In order to obtain exact measurement of the distribution regarding the *likelihood*, *prior*, and *posterior*, we can explicitly quantify the distributions by using hyper-parameters, for instance:
-- ***P(θ) = P(θ|α) ~ N(θ ; 0, α<sup>-1</sup>I)*** for the *prior*, where ***α*** is the hyper-parameter controlling the shape of probabilistic distribution;
-- ***P(D|θ) = P(y<sub>k</sub>|x<sub>k</sub> , θ, β) ~ N(y<sub>k</sub> ; θ<sup>T</sup>X, β<sup>-1</sup>I)***, where ***β*** is another hyper-parameter of precision (inverse variance) controlling the noise intensity as ***ε ~ N(ε ; 0, β<sup>-1</sup>I)***;
+- ***P(θ) = P(θ│α) ~ N(θ ; 0, α<sup>-1</sup>I)*** for the *prior*, where ***α*** is the hyper-parameter controlling the shape of probabilistic distribution;
+- ***P(D│θ) = P(y<sub>k</sub>│x<sub>k</sub> , θ, β) ~ N(y<sub>k</sub> ; θ<sup>T</sup>X, β<sup>-1</sup>I)***, where ***β*** is another hyper-parameter of precision (inverse variance) controlling the noise intensity as ***ε ~ N(ε ; 0, β<sup>-1</sup>I)***;
 - we can even have design function ***φ*** for ***φ(x)=1+x***.
 
 If we can be able to specify the hyper-parameters, the *posterior* is measurable, visually, the *width* and *center* of the shadow in Fig.10 is to be a function of hyper-parameters ***α*** and ***β***. These hyper-parameters can also be obtained automatically! The approach is called maximizing the *marginal likelihood* through [***Empirical Bayes method***](https://en.wikipedia.org/wiki/Empirical_Bayes_method), which will not be covered in this tutorial.
